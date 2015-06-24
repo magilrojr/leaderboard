@@ -1,0 +1,42 @@
+/* CSS declarations go here */
+body {
+    background-color: rgb(223, 255, 250);
+}
+
+h1 {
+    color: rgb(97, 28, 244);
+    text-align: center;
+}
+
+ul {
+    color: rgb(136, 72, 240);
+}
+
+.selected{
+    background-color: rgb(46, 253, 129);
+}
+
+.selectedCurrent{
+    color: rgb(22, 49, 233)
+}
+
+.increment{
+    color: rgb(72, 244, 21)
+}
+
+.decrement{
+    color: rgb(240, 8, 8)
+}
+
+.totalPlayers{
+    color: rgb(16, 157, 22)
+}
+/*.fivePoint{
+    color: rgb(39, 186, 15)
+}*/
+
+/*ul.total{
+    list-style-type: square;
+    color: orange;
+}
+*/
