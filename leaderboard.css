@@ -8,8 +8,20 @@ h1 {
     text-align: center;
 }
 
-ul {
+th {
     color: rgb(136, 72, 240);
+    font-style: oblique;
+    font-size: 25px;
+}
+
+tr {
+    color: rgb(190, 172, 53);
+    font-style: italic;
+}
+
+ol {
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(20, 51, 212)
 }
 
 .selected{

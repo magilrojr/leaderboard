@@ -2,17 +2,20 @@
   <title>Leaderboard</title>
 </head>
 <body>
+  {{> loginButtons}}
   <h1>Leaderboard</h1>
   {{> leaderboard}}
 </body>
 
 
 <template name="leaderboard">
-    <ul>
+    <table>
+        <ol>
         {{#each player}}
-            <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+            <li class="player {{selectedClass}}"><th>{{name}}</th> <tr>{{score}}</tr></li>
         {{/each}}
-    </ul>
+        </ol>
+    </table>
 
     {{#if showSelectedPlayer}}
         <input type="button" class="increment" value="Give 5 Points">
@@ -34,8 +37,21 @@
 </template>
 
 <template name="addPlayerForm">
+    {{#if currentUser}}
+    <br>
     <form>
-        <input type="text" name="playerName">
-        <input type="submit" value="Add Player">
+        <fieldset>
+            <legend>Add a Player</legend>
+            Name:<br>
+            <input type="text" name="playerName">
+            <br>
+            Quantity:<br>
+            <input type="number" name="quantity" min="5" max="500">
+                <!--    type="text" name="playerScore" value=100-->
+            <br><br>
+            <input type="submit" value="Add Player and Score">
+        </fieldset>
     </form>
+    <br>
+    {{/if}}
 </Template>

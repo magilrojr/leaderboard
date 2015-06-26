@@ -7,7 +7,8 @@ if(Meteor.isClient){
     // this code only runs on the client
     Template.leaderboard.helpers({
         'player': function(){
-            return PlayersList.find({}, {sort: {score: -1, name: 1} })
+            var currentUserId = Meteor.userId();
+            return PlayersList.find({createdBy: currentUserId}, {sort: {score: -1, name: 1} })
         },
         'selectedClass': function(){
             var playerId = this._id;
@@ -57,6 +58,9 @@ if(Meteor.isClient){
         },
         'click .remove': function(){
             var selectedPlayer = Session.get('selectedPlayer');
+            var confirmPlayer = PlayersList.findOne(selectedPlayer).name;
+            console.log(confirmPlayer);
+            if(confirm("Are you positive you want to remove "+confirmPlayer+"?"))
             PlayersList.remove(selectedPlayer);
         }
 
@@ -72,11 +76,15 @@ if(Meteor.isClient){
         'submit form': function(event){
             event.preventDefault();
             var playerNameVar = event.target.playerName.value;
+            var playerScoreVar = event.target.quantity.value;
+            var parsedScore = parseInt(playerScoreVar);
+            var currentUserId = Meteor.userId();
             PlayersList.insert({
                 name: playerNameVar,
-                score: 0
+                score: parsedScore, createdBy: currentUserId
             });
             event.target.playerName.value = null;
+            event.target.quantity.value = null;
         }
     });
 }
