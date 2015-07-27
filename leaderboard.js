@@ -128,6 +128,7 @@ if(Meteor.isServer){
         },
 
         'removePlayerData': function(selectedPlayer){
+            var currentUserId = Meteor.userId();
             PlayersList.remove({_id: selectedPlayer, createdBy: currentUserId});
 
         },
